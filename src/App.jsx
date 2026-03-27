@@ -6,6 +6,7 @@ import "./App.css";
 function App() {
   const [books, setBooks] = useState([]);
   const [current, setCurrent] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
 
   const db = getFirestore(app);
@@ -28,6 +29,7 @@ function App() {
 
   const handlePlay = (book) => {
     setCurrent(book);
+    setIsPlaying(true);
 
     setTimeout(() => {
       if (audioRef.current) {
@@ -37,21 +39,35 @@ function App() {
     }, 100);
   };
 
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(() => {});
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <div className="app">
-      <h1 className="logo">StillPages</h1>
+      {/* TOP BAR */}
+      <header className="topbar">
+        <h2>StillPages</h2>
+      </header>
 
-      {/* 🎯 BIG CENTERED CARDS */}
-      <div className="list">
-        {books.map((book) => (
-          <div
-            key={book.id}
-            className={`card ${
-              current?.id === book.id ? "active" : ""
-            }`}
-            onClick={() => handlePlay(book)}
-          >
-            <div className="cover">
+      {/* MAIN */}
+      <main className="main">
+        <div className="grid">
+          {books.map((book) => (
+            <div
+              key={book.id}
+              className={`card ${
+                current?.id === book.id ? "active" : ""
+              }`}
+              onClick={() => handlePlay(book)}
+            >
               <img
                 src={book.coverUrl}
                 alt={book.title}
@@ -60,18 +76,17 @@ function App() {
                     "https://via.placeholder.com/300x300?text=Book";
                 }}
               />
+              <h4>{book.title}</h4>
+              <p>{book.author}</p>
             </div>
+          ))}
+        </div>
+      </main>
 
-            <h2>{book.title}</h2>
-            <p>{book.author}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* 🎵 PLAYER */}
+      {/* PLAYER */}
       {current && (
         <div className="player">
-          <div className="left">
+          <div className="player-left">
             <img
               src={current.coverUrl}
               alt=""
@@ -86,14 +101,15 @@ function App() {
             </div>
           </div>
 
-          <audio
-            ref={audioRef}
-            controls
-            preload="auto"
-            key={current.audioUrl}
-          >
-            <source src={current.audioUrl} type="audio/mpeg" />
-          </audio>
+          <div className="player-center">
+            <button onClick={togglePlay}>
+              {isPlaying ? "⏸" : "▶"}
+            </button>
+
+            <audio ref={audioRef} key={current.audioUrl}>
+              <source src={current.audioUrl} type="audio/mpeg" />
+            </audio>
+          </div>
         </div>
       )}
     </div>

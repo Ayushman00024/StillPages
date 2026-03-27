@@ -1,69 +1,74 @@
 body {
   margin: 0;
-  background: #000;
-  color: #fff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Inter", sans-serif;
+  background: #121212;
+  color: white;
 }
 
+/* APP LAYOUT */
 .app {
-  padding: 30px;
-  text-align: center;
-  padding-bottom: 120px;
-}
-
-.logo {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-
-/* CENTERED STACK */
-.list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 50px;
+  min-height: 100vh;
 }
 
-/* BIG CARD */
+/* TOP BAR */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #000;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #282828;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 16px;
+  padding-bottom: 110px; /* space for player */
+  overflow-y: auto;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/* CARD */
 .card {
-  width: 320px;
+  background: #181818;
+  padding: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
-.card:hover {
-  transform: scale(1.05);
+.card:active {
+  transform: scale(0.97);
 }
 
 .card.active {
-  transform: scale(1.05);
+  border: 2px solid #1db954;
 }
 
-/* IMAGE */
-.cover {
+.card img {
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #111;
+  border-radius: 8px;
 }
 
-.cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* TEXT */
-.card h2 {
-  margin: 15px 0 5px;
-  font-size: 18px;
+.card h4 {
+  margin: 8px 0 4px;
+  font-size: 13px;
 }
 
 .card p {
-  margin: 0;
-  color: #aaa;
+  font-size: 11px;
+  color: #b3b3b3;
 }
 
 /* PLAYER */
@@ -73,24 +78,56 @@ body {
   left: 0;
   width: 100%;
   background: #181818;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 14px;
   border-top: 1px solid #282828;
-  padding: 15px 20px;
+
+  box-sizing: border-box; /* fixes overflow */
 }
 
-.player .left {
+/* PLAYER LEFT */
+.player-left {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
+  max-width: 60%;
+  overflow: hidden;
 }
 
-.player img {
-  width: 50px;
-  height: 50px;
+.player-left img {
+  width: 45px;
+  height: 45px;
   border-radius: 6px;
 }
 
-audio {
-  width: 100%;
-  filter: invert(1);
+/* PLAYER CENTER (true center alignment) */
+.player-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* PLAYER BUTTON */
+.player-center button {
+  background: #1db954;
+  border: none;
+  border-radius: 50%;
+  padding: 12px 14px; /* reduced to prevent overflow */
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* TABLET / LARGE SCREENS */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .main {
+    padding: 20px;
+  }
 }
