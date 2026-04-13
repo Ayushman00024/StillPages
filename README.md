@@ -1,16 +1,73 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 📖 Still Pages
 
-Currently, two official plugins are available:
+**Still Pages** is a minimal audiobook web platform for listening to classic and popular books — no distractions, just words and sound.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🎧 Available Audiobooks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Steve Jobs — Walter Isaacson
+- Wings of Fire — A.P.J. Abdul Kalam
+- The Magic — Rhonda Byrne
+- The Monk Who Sold His Ferrari — Robin Sharma
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+- 🎵 Stream audiobooks directly in the browser
+- 📚 Clean book library with cover art
+- ▶️ Simple audio player — play, pause, seek
+- 📱 Responsive design for mobile and desktop
+
+---
+
+## 🛠️ Built With
+
+- **React** — UI framework
+- **Vite** — Fast build tool
+- **Firebase** — Backend and hosting
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js installed
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/Ayushman00024/StillPages.git
+cd StillPages
+npm install
+npm run dev
+```
+
+---
+
+## 🎯 Vision
+
+Still Pages is built for readers who want to listen — a quiet, focused space for audiobooks without the noise of big platforms.
+
+---
+
+## 👤 Author
+
+**Ayushman Singh**  
+GitHub: https://github.com/Ayushman00024
+
+---
+
+## 📄 License
+
+MIT
+```
+
+---
+
+Just copy this and replace the existing README.md in your repo. Also add `MIT` as the license while you're at it — takes 10 seconds on GitHub.
+
+Want me to write a proper README for NerdNugget too? That one also needs it.
