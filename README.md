@@ -66,8 +66,4 @@ GitHub: https://github.com/Ayushman00024
 MIT
 ```
 
----
 
-Just copy this and replace the existing README.md in your repo. Also add `MIT` as the license while you're at it — takes 10 seconds on GitHub.
-
-Want me to write a proper README for NerdNugget too? That one also needs it.
